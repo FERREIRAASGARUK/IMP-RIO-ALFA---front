@@ -60,11 +60,10 @@ function Cart() {
     const prods = await Api.get('/products');
     const prodsValids = prods.data;
     let soma = 0
-
+    
     const produtos = prodsValids.filter(e => {
       return (
         e.Usuario === id.id
-
       )
     })
     produtos ? setElementos(produtos) : setElementos(null);
