@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Contexto } from '../../../Root/root';
-import api from '../../../Services/cardServer.js';
-import Api from '../../../Services/products';
-import classe from './style';
-import { Produtos } from '../Produtos';
-import { Usuario } from '../../Form Login/index';
-import users from '../../../Services/userServer';
+import React, { useEffect, useState, useContext } from "react";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { Contexto } from "../../../Root/root";
+import api from "../../../Services/cardServer.js";
+import Api from "../../../Services/products";
+import classe from "./style";
+import { Produtos } from "../Produtos";
+import { Usuario } from "../../Form Login/index";
+import users from "../../../Services/userServer";
 
 function Card() {
   const User = useContext(Usuario);
@@ -26,62 +26,43 @@ function Card() {
 
   async function setUrls() {
     busca.pesquisa
-      ? (urls = `/promotions?_order=desc&_sort=id&title_like=${busca.pesquisa}`)
-      : (urls = '/promotions?_order=desc&_sort=id');
+      ? (urls = `/promotions?_order=desc&_sort=id&categoria_like=${busca.pesquisa}`)
+      : (urls = "/promotions?_order=desc&_sort=id");
 
     const response = await api.get(urls);
     setCards(response.data);
   }
 
-  
   async function adicionar(props) {
+    const currentUser = JSON.parse(localStorage.getItem("login"));
+    const validar = await Api.get(`/products`);
+    const semelhante = validar.data.filter((e) => {
+      return e.title === props.title && currentUser.id === e.Usuario;
+    });
 
-    const currentUser = JSON.parse(localStorage.getItem('login'));
-    const validar = await Api.get(`/products`)
-    const semelhante = validar.data.filter(e => {
-      return (e.title === props.title && currentUser.id === e.Usuario)
-    })
-
-    console.log(semelhante)
+    console.log(semelhante);
 
     props.Usuario = currentUser.id;
 
-
     async function atualizar() {
-      props.quantidade = props.quantidade + 1
-      Cart.setProduto(props.quantidade)
-      console.log(Cart.p)
-      return (
-
-        await Api.put(`http://localhost:2000/products/${props.id}`, props)
-
-      )
+      props.quantidade = props.quantidade + 1;
+      Cart.setProduto(props.quantidade);
+      console.log(Cart.p);
+      return await Api.put(`http://localhost:2000/products/${props.id}`, props);
     }
-
 
     async function postar() {
-      props.id = props.id + 3
-      Cart.setProduto(props.quantidade)
-      console.log(Cart.produto)
-      return (
-
-        await Api.post(`http://localhost:2000/products`, props)
-      )
+      props.id = props.id + 3;
+      Cart.setProduto(props.quantidade);
+      console.log(Cart.produto);
+      return await Api.post(`http://localhost:2000/products`, props);
     }
 
-
-    User.valid &&
-      semelhante.length >= 1 ? atualizar() : postar();
-
-
-
-
-
-
+    User.valid && semelhante.length >= 1 ? atualizar() : postar();
   }
   return (
     <div>
-      <Grid className={estilo.pai} container spacing={1} direction="row">
+      <div className={estilo.pai}>
         {cards &&
           cards.map((elemento) => (
             <Grid item xs={3}>
@@ -127,7 +108,7 @@ function Card() {
               </Paper>
             </Grid>
           ))}
-      </Grid>
+      </div>
     </div>
   );
 }

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { Link, useHistory } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
-import api from '../../Services/userServer';
-import estillo from './style';
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import { Link, useHistory } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { Snackbar } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+import api from "../../Services/userServer";
+import estillo from "./style";
 
 const Formulario = () => {
   function Alert(props) {
@@ -22,8 +22,8 @@ const Formulario = () => {
   const [message, setMessage] = useState();
   const [retorno, setRetorno] = useState();
   const [Open, setOpen] = useState();
-  const vertical = 'top';
-  const horizontal = 'left';
+  const vertical = "top";
+  const horizontal = "left";
   let mensagem;
   let result;
 
@@ -37,11 +37,11 @@ const Formulario = () => {
   const estilo = estillo();
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      senha: '',
-      Contato: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      senha: "",
+      Contato: "",
     },
 
     validationSchema: yup.object({
@@ -79,21 +79,21 @@ const Formulario = () => {
     }),
 
     onSubmit: async (values) => {
-      const dados = await api.get('/users');
+      const dados = await api.get("/users");
       const usuarios = dados.data;
 
       async function postar() {
-        return await api.post('/users', values);
+        return await api.post("/users", values);
       }
 
       const resposta = usuarios.filter((e) => e.email === values.email);
 
-      resposta[0] ? (result = 'error') : (result = 'success');
-      result === 'success'
-        ? postar() && history.push('/')
-        : result === 'error'
-          ? (mensagem = 'usuário já cadastrado, faça login')
-          : (mensagem = 'cadastro realizado');
+      resposta[0] ? (result = "error") : (result = "success");
+      result === "success"
+        ? postar() && history.push("/")
+        : result === "error"
+        ? (mensagem = "usuário já cadastrado, faça login")
+        : (mensagem = "cadastro realizado");
 
       setMessage(mensagem);
       setRetorno(result);
@@ -113,10 +113,10 @@ const Formulario = () => {
             <div>{message}</div>
           </Alert>
         </Snackbar>
-        <Avatar style={{ marginTop: '5%', background: '#338DFF' }}>
+        <Avatar style={{ marginTop: "5%", background: "#338DFF" }}>
           <LockOutlinedIcon />
         </Avatar>
-        <h1 style={{ color: 'black', fontFamily: 'Arial', margin: '10%' }}>
+        <h1 style={{ color: "black", fontFamily: "Arial", margin: "10%" }}>
           Faça seu cadastro
         </h1>
 
@@ -207,7 +207,7 @@ const Formulario = () => {
             variant="contained"
             color="secondary"
             className={estilo.btn}
-            style={{ marginTop: '10%', marginBottom: '5%' }}
+            style={{ marginTop: "10%", marginBottom: "5%" }}
             onClick={() => mudar()}
           >
             Salvar
@@ -215,10 +215,10 @@ const Formulario = () => {
           <Grid container>
             <Grid item xs>
               <Link
-                style={{ textDecoration: 'none', color: '#0000FF' }}
+                style={{ textDecoration: "none", color: "#0000FF" }}
                 to="/Login"
               >
-                Já tem uma conta? Entre{' '}
+                Já tem uma conta? Entre{" "}
               </Link>
             </Grid>
           </Grid>

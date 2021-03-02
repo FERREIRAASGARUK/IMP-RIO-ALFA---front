@@ -1,25 +1,24 @@
-import React, { useState, useContext, createContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import Typography from '@material-ui/core/Typography';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import React, { useState, useContext, createContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Typography from "@material-ui/core/Typography";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {
   AddToHomeScreen,
   AddPhotoAlternate,
-
   Title,
   MonetizationOn,
-} from '@material-ui/icons';
-import { Button, Snackbar, Container, Avatar } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import MuiAlert from '@material-ui/lab/Alert';
-import api from '../../Services/cardServer';
-import classe from './style';
-import Header from '../Header/header';
+} from "@material-ui/icons";
+import { Button, Snackbar, Container, Avatar } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import MuiAlert from "@material-ui/lab/Alert";
+import api from "../../Services/cardServer";
+import classe from "./style";
+import Header from "../Header/header";
 
 const Formulario = () => {
   const classes = classe();
@@ -29,8 +28,8 @@ const Formulario = () => {
   }
 
   const [Aberto, setAberto] = useState();
-  const vertical = 'top';
-  const horizontal = 'left';
+  const vertical = "top";
+  const horizontal = "left";
   const [Msg, setMsg] = useState();
   const [retorno, setRetorno] = useState();
 
@@ -43,10 +42,10 @@ const Formulario = () => {
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      price: '',
-      imageUrl: '',
-      url: '',
+      title: "",
+      price: "",
+      imageUrl: "",
+      url: "",
     },
 
     validationSchema: Yup.object({
@@ -81,7 +80,7 @@ const Formulario = () => {
     }),
 
     onSubmit: async (values) => {
-      const dataStr = localStorage.getItem('login');
+      const dataStr = localStorage.getItem("login");
       const data = JSON.parse(dataStr);
 
       let email;
@@ -89,18 +88,22 @@ const Formulario = () => {
 
       let msg;
       let ret;
-      const datas = await api.get('/promotions');
+      const datas = await api.get("/promotions");
       const promo = datas.data;
       const prod = promo.filter((e) => e.imageUrl === values.imageUrl);
 
       async function verificar() {
         if (prod.length === 0) {
-          await api.post('/promotions', { ...values, quantidade: 1, usuario: email });
-          msg = 'Produto cadastrado';
-          ret = 'success';
+          await api.post("/promotions", {
+            ...values,
+            quantidade: 1,
+            usuario: email,
+          });
+          msg = "Produto cadastrado";
+          ret = "success";
         } else {
-          msg = 'Produto já cadastrado use outra imagem!';
-          ret = 'error';
+          msg = "Produto já cadastrado use outra imagem!";
+          ret = "error";
         }
         setMsg(msg);
         setRetorno(ret);
@@ -124,8 +127,8 @@ const Formulario = () => {
       </Snackbar>
       <Container component="main" maxWidth="sm">
         <div className={classes.paper}>
-          <Avatar className={classes.imagem} >
-            <ShoppingCartIcon color='primary' />
+          <Avatar className={classes.imagem}>
+            <ShoppingCartIcon color="primary" />
           </Avatar>
           <h1 className={classes.title}>CADASTRE SEUS PRODUTOS</h1>
           <form onSubmit={formik.handleSubmit} className={classes.form}>

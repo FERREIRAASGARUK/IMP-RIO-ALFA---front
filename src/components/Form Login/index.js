@@ -1,18 +1,17 @@
-import React, { useState, useContext, createContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import Typography from '@material-ui/core/Typography';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Button, Snackbar, Container, Avatar } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import MuiAlert from '@material-ui/lab/Alert';
-import api from '../../Services/userServer';
-import classe from './style';
-
+import React, { useState, useContext, createContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Typography from "@material-ui/core/Typography";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { Button, Snackbar, Container, Avatar } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import MuiAlert from "@material-ui/lab/Alert";
+import api from "../../Services/userServer";
+import classe from "./style";
 
 export const Usuario = createContext();
 
@@ -33,11 +32,11 @@ const Login = () => {
 
   const contexto = useContext(Usuario);
   const history = useHistory();
-  const [msg, setMsg] = useState('');
-  const [result, setResult] = useState('');
+  const [msg, setMsg] = useState("");
+  const [result, setResult] = useState("");
   const [Aberto, setAberto] = useState();
-  const vertical = 'top';
-  const horizontal = 'left';
+  const vertical = "top";
+  const horizontal = "left"; 
   const classes = classe();
 
   function abrir() {
@@ -49,8 +48,8 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      senha: '',
+      email: "",
+      senha: "",
     },
 
     validationSchema: Yup.object({
@@ -77,16 +76,18 @@ const Login = () => {
       let mensagem;
       let validar;
       let id;
-      const response = await api.get('http://localhost:3002/users');
+      const response = await api.get("http://localhost:3002/users");
       const resposta = response.data;
       const result = resposta.filter(
         (e) => e.email === values.email && e.senha === values.senha
       );
-      result[0] ? (retorno = 'success') : (retorno = 'error');
-      retorno === 'success' ? (mensagem = 'Login realizadao') : (mensagem = 'Usuário ou senha incorreta');
-      retorno === 'success' && (validar = result[0]);
-      retorno === 'success' && history.push('/');
-      result[0] && localStorage.setItem('login', JSON.stringify(result[0]));
+      result[0] ? (retorno = "success") : (retorno = "error");
+      retorno === "success"
+        ? (mensagem = "Login realizadao")
+        : (mensagem = "Usuário ou senha incorreta");
+      retorno === "success" && (validar = result[0]);
+      retorno === "success" && history.push("/");
+      result[0] && localStorage.setItem("login", JSON.stringify(result[0]));
       contexto.setValid(validar);
       setMsg(mensagem);
       setResult(retorno);
@@ -173,7 +174,7 @@ const Login = () => {
           <Grid container>
             <Grid item xs>
               <Link
-                style={{ textDecoration: 'none', color: '#0000FF' }}
+                style={{ textDecoration: "none", color: "#0000FF" }}
                 to="/senha"
               >
                 Esqueceu sua senha?
@@ -181,10 +182,10 @@ const Login = () => {
             </Grid>
             <Grid item>
               <Link
-                style={{ textDecoration: 'none', color: '#0000FF' }}
+                style={{ textDecoration: "none", color: "#0000FF" }}
                 to="/Register"
               >
-                {' '}
+                {" "}
                 Não tem uma conta? crie uma
               </Link>
             </Grid>
