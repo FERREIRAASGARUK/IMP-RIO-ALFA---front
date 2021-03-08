@@ -44,7 +44,7 @@ function Botao(props) {
         <Avatar
           variant="outlined"
           color="secondary"
-          style={{ marginTop: 2, height: 50, width: 50 }}
+          style={{ marginTop: 0, height: 50, width: 50 }}
           src={props.image}
         ></Avatar>
       </IconButton>

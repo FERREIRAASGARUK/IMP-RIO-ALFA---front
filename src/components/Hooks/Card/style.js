@@ -14,13 +14,13 @@ const classe = makeStyles({
   },
 
   pai: {
-    marginRight: "10%",
     marginTop: "3%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     marginLeft: 300,
     marginTop: 100,
+    position: "relative",
   },
   image: {
     marginBottom: 50,
