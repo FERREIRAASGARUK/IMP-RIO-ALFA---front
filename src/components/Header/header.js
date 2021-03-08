@@ -31,6 +31,7 @@ import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import LaptopWindowsIcon from "@material-ui/icons/LaptopWindows";
 import DevicesOtherIcon from "@material-ui/icons/DevicesOther";
 import SportsFootballIcon from "@material-ui/icons/SportsFootball";
+import StarOutlineIcon from "@material-ui/icons/StarOutline";
 const Header = () => {
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -246,8 +247,8 @@ const Header = () => {
             }}
           >
             <div className={estilo.categorias}>
-              <Typography className={estilo.options}>Celulares</Typography>
-              <PhoneAndroidIcon
+              <Typography className={estilo.options}>Sapatos</Typography>
+              <StarOutlineIcon
                 style={{ color: "black", marginTop: 33, marginRight: 100 }}
               />
             </div>
@@ -264,8 +265,8 @@ const Header = () => {
             }}
           >
             <div className={estilo.categorias}>
-              <Typography className={estilo.options}>Celulares</Typography>
-              <PhoneAndroidIcon
+              <Typography className={estilo.options}>Eletrônicos</Typography>
+              <DevicesOtherIcon
                 style={{ color: "black", marginTop: 33, marginRight: 100 }}
               />
             </div>
@@ -355,7 +356,7 @@ const Header = () => {
           </div>
         </Popover>
 
-        <Grid item xs={1} >
+        <Grid item xs={1}>
           <Verificar image={profile.image} />
         </Grid>
       </div>
