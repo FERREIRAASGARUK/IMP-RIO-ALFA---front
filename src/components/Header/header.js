@@ -172,7 +172,7 @@ const Header = () => {
           anchor="left"
           open={openMenu}
           classes={{
-            paper: { width: 240 },
+            paper: { width: 100 },
           }}
         >
           <div className={estilo.drawerHeader}>
@@ -355,7 +355,7 @@ const Header = () => {
           </div>
         </Popover>
 
-        <Grid item xs={1}>
+        <Grid item xs={1} >
           <Verificar image={profile.image} />
         </Grid>
       </div>

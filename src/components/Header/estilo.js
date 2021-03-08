@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-const drawerWidth = 240;
+const drawerWidth = 200;
 const estilo = makeStyles({
   type: {
     marginTop: 10,
@@ -18,7 +18,7 @@ const estilo = makeStyles({
     marginTop: 33,
     marginBottom: 33,
     marginLeft: 50,
-    width: 200,
+    width: 100,
     color: "#6F6C6C",
   },
   categorias: {
@@ -56,14 +56,14 @@ const estilo = makeStyles({
     width: 30,
     marginLeft: 10,
     height: 30,
-    marginTop: 10,
+    marginTop: 5,
     color: "orange",
   },
   btn2: {
     width: 30,
     marginRight: 10,
     height: 30,
-    marginTop: 10,
+    marginTop: 5,
     color: "orange",
   },
   quantidade: {
@@ -148,18 +148,18 @@ const estilo = makeStyles({
     flexDirection: "row",
     justifyContent: "space-between",
     background: "black",
-    height: 100,
+    height: 80,
     position: "relative",
     boxShadow: "0 2px 13px 0 rgba(0,0,0,.33)",
-    paddingTop: 50,
+    paddingTop: 30,
   },
   drawer: {
-    width: drawerWidth,
+    width: 100,
     flexShrink: 0,
     position: "absolute",
   },
   drawerHeader: {
-    height: 150,
+    height: 100,
     paddingLeft: 250,
     paddingBottom: 0,
   },
