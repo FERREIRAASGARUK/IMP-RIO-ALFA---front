@@ -1,5 +1,21 @@
 import { makeStyles } from "@material-ui/core/styles";
-const drawerWidth = 200;
+import styled from "styled-components";
+
+export const Container = styled.div`
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  jsutify-content: space-between;
+  height: 80px;
+  position: relative;
+  padding-top: 30px;
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.33);
+  @media (max-width: 1366px) {
+    width: 1366px;
+    margin-right: 0px;
+  }
+`;
+
 const estilo = makeStyles({
   type: {
     marginTop: 10,
@@ -116,13 +132,11 @@ const estilo = makeStyles({
   footer: {
     height: 100,
     width: 490,
-    margin: 0,
+    marginRight: 0,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     paddingRight: 15,
-    marginRight: 0,
-    background: "#1976d2",
   },
   papel: {
     display: "flex",
@@ -142,16 +156,6 @@ const estilo = makeStyles({
     color: "white",
     marginBottom: 80,
     marginLeft: 20,
-  },
-  header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    background: "black",
-    height: 80,
-    position: "relative",
-    boxShadow: "0 2px 13px 0 rgba(0,0,0,.33)",
-    paddingTop: 30,
   },
   drawer: {
     width: 100,

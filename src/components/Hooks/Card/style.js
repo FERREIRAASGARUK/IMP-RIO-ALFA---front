@@ -1,56 +1,108 @@
 import { makeStyles } from "@material-ui/styles";
+import styled from "styled-components";
+
+export const Container = styled.div`
+  display: flex;
+  margin-top:100px;
+  margin-left:150px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 1920px,
+  height:1080px;
+
+  @media(max-width:1366px){
+    padding-top:100px;
+   
+    display:flex;
+    flex-wrap:wrap;
+
+
+  }
+  @media(max-width:1440px){
+    padding-top:100px;
+    max-width:1440px;
+    margin-left:70px;
+  }
+`;
+
+export const Paper = styled.div`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-itens: center;
+  height: 500px;
+  margin: 10px;
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.33);
+  padding-top: 10px;
+  padding-left: 5px;
+  @media (max-width: 1366px) {
+    width: 280px;
+    height: 400px;
+  }
+  @media (max-width: 1440px) {
+    width: 280px;
+    height: 400px;
+  }
+`;
+
+export const Image = styled.img`
+  margin-bottom: 50px;
+  width: auto;
+  height: 203px;
+  margin-left: 50px;
+  @media (max-width: 1366px) {
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+  }
+  @media (max-width: 1440px) {
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+  }
+`;
+
+export const Title = styled.span`
+  margin-top: 10px;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: 200px;
+  margin-left: 20px;
+
+  color: grey;
+  height: 200px;
+  @media (max-width: 1366px) {
+    font-size: 17px;
+    font-weigth: 900px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 1440px) {
+    font-size: 19px;
+    font-weigth: 900px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+`;
+export const Price = styled.span`
+  color: #1976d2;
+  font-weight: 1000px;
+  font-family: Arial;
+  font-size: 25px;
+  margin-bottom: 10px;
+`;
 
 const classe = makeStyles({
-  paper: {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column",
-    alignItems: "center",
-    margin: 20,
-    boxShadow: "0 2px 10px 0 rgba(0,0,0,.80)",
-    height: 500,
-    borderRadius: 4,
-    paddingTop: 30,
-  },
-
-  pai: {
-    marginTop: "3%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginLeft: 300,
-    marginTop: 100,
-    position: "relative",
-  },
-  image: {
-    marginBottom: 50,
-    width: "auto",
-    height: 203,
-  },
-
-  title: {
-    marginTop: "%",
-    fontFamily: "Arial",
-    fontSize: 20,
-    fontWeight: 200,
-    marginLeft: 20,
-    color: "grey",
-    height: 133,
-  },
+  title: {},
   link: {
     textDecoration: "none",
-  },
-  preco: {
-    color: "#1976d2",
-    fontWeight: 1000,
-    fontFamily: "Arial",
-    fontSize: 30,
-    marginBottom: 15,
   },
   precoPai: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    height: 100,
+    marginBottom: 0,
   },
   input: {
     width: "33%",

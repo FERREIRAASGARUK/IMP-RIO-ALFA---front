@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { AppBar, Paper } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import { Container } from "./estilo";
 import ShoppingCart from "@material-ui/icons/ShoppingCartOutlined";
 import Popover from "@material-ui/core/Popover";
 import Add from "@material-ui/icons/AddCircleOutline";
@@ -142,7 +143,7 @@ const Header = () => {
         </Alert>
       </Snackbar>
 
-      <div className={estilo.header} container spacing={0}>
+      <Container>
         <Toolbar>
           <IconButton
             className={estilo.Toolbar}
@@ -162,7 +163,7 @@ const Header = () => {
             style={{ textDecoration: "none" }}
           >
             <Typography variant="h1" className={estilo.h1}>
-              IMPÉRIO ALFA
+              Tech Blins
             </Typography>
           </Link>
         </Toolbar>
@@ -359,7 +360,7 @@ const Header = () => {
         <Grid item xs={1}>
           <Verificar image={profile.image} />
         </Grid>
-      </div>
+      </Container>
     </div>
   );
 };

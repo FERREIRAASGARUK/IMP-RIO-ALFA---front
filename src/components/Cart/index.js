@@ -13,6 +13,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 function Cart() {
   const [quantidade, setQuantidade] = useState(0);
   const [Total, setTotal] = useState(0);
+  const [finish, setFinish] = useState(false);
   const carrinho = useContext(Produtos);
   const [elemento, setElementos] = useState([]);
   const [value, setValue] = useState(0);
@@ -28,6 +29,7 @@ function Cart() {
 
   function abrir() {
     setAberto(true);
+    setFinish(true);
   }
   function fechar() {
     setAberto(false);
@@ -73,72 +75,78 @@ function Cart() {
   return (
     <div>
       <Header />
-      <div className={classes.footer}>
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={Aberto}
-          onClose={fechar}
-          autoHideDuration={5000}
-        >
-          <Alert severity={result}>
-            <div>{msg}</div>
-          </Alert>
-        </Snackbar>
+      {
+        <div>
+          <div className={classes.footer}>
+            <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              open={Aberto}
+              onClose={fechar}
+              autoHideDuration={5000}
+            >
+              <Alert severity={result}>
+                <div>{msg}</div>
+              </Alert>
+            </Snackbar>
 
-        <Button
-          variant="contained"
-          className={classes.finalizar}
-          onClick={() => {
-            abrir();
-          }}
-        >
-          Finalizar
-        </Button>
-      </div>
-      <div className={classes.container}>
-        <div className={classes.carrinho}>
-          {elemento &&
-            elemento.map((e) => (
-              <div>
-                <div className={classes.produto}>
-                  <img
-                    className={classes.image}
-                    alt="produto"
-                    src={e.imageUrl}
-                  />
+            <Button
+              variant="contained"
+              className={classes.finalizar}
+              onClick={() => {
+                abrir();
+              }}
+            >
+              Finalizar
+            </Button>
+          </div>
+          <div className={classes.container}>
+            <div className={classes.carrinho}>
+              {elemento &&
+                elemento.map((e) => (
                   <div>
-                    <Typography className={classes.title}>{e.title}</Typography>
-                    <Typography className={classes.value}>
-                      R$
-                      {e.price}
-                    </Typography>
-                  </div>
-                  <div className={classes.quantidade}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <IconButton
-                        onClick={() => remover(e)}
-                        className={classes.btn}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
+                    <div className={classes.produto}>
+                      <img
+                        className={classes.image}
+                        alt="produto"
+                        src={e.imageUrl}
+                      />
+                      <div>
+                        <Typography className={classes.title}>
+                          {e.title}
+                        </Typography>
+                        <Typography className={classes.value}>
+                          R$
+                          {e.price}
+                        </Typography>
+                      </div>
+                      <div className={classes.quantidade}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <IconButton
+                            onClick={() => remover(e)}
+                            className={classes.btn}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </div>
+                        <div className={classes.valor}>
+                          <Typography cstyle={{ fontWeight: 1000 }}>
+                            R${(e.price * e.quantidade).toFixed(0)}
+                          </Typography>
+                        </div>
+                      </div>
                     </div>
-                    <div className={classes.valor}>
-                      <Typography cstyle={{ fontWeight: 1000 }}>
-                        R${(e.price * e.quantidade).toFixed(0)}
-                      </Typography>
-                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
+            </div>
+          </div>
         </div>
-      </div>
+      }
     </div>
   );
 }

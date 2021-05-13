@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Contexto } from "../../../Root/root";
@@ -10,6 +8,7 @@ import classe from "./style";
 import { Produtos } from "../Produtos";
 import { Usuario } from "../../Form Login/index";
 import users from "../../../Services/userServer";
+import { Container, Paper, Image, Title, Price } from "./style";
 
 function Card() {
   const User = useContext(Usuario);
@@ -62,53 +61,45 @@ function Card() {
   }
   return (
     <div>
-      <div className={estilo.pai}>
+      <Container>
         {cards &&
           cards.map((elemento) => (
-            <Grid item xs={3}>
-              <Paper className={estilo.paper}>
-                <>
-                  <a
-                    className={estilo.link}
-                    href={elemento.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <img
-                      className={estilo.image}
-                      alt="imagem"
-                      src={elemento.imageUrl}
-                    />
-                  </a>
+            <Paper>
+              <a
+                className={estilo.link}
+                href={elemento.url}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Image alt="imagem" src={elemento.imageUrl} />
+              </a>
 
-                  <a
-                    className={estilo.link}
-                    href={elemento.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <Typography className={estilo.title}>
-                      {elemento.title}
-                    </Typography>
-                  </a>
-                  <div className={estilo.precoPai}>
-                    <span className={estilo.preco}>
-                      R$
-                      {elemento.price}
-                    </span>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => adicionar(elemento)}
-                    >
-                      Adicionar
-                    </Button>
-                  </div>
-                </>
-              </Paper>
-            </Grid>
+              <a
+                className={estilo.link}
+                href={elemento.url}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <div style={{ height: 100 }}>
+                  <Title>{elemento.title}</Title>
+                </div>
+              </a>
+              <div className={estilo.precoPai}>
+                <Price>
+                  R$
+                  {elemento.price}
+                </Price>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => adicionar(elemento)}
+                >
+                  Adicionar
+                </Button>
+              </div>
+            </Paper>
           ))}
-      </div>
+      </Container>
     </div>
   );
 }

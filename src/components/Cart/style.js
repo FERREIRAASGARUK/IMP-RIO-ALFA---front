@@ -28,8 +28,8 @@ const estilo = makeStyles({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingRight: 15,
-    marginLeft: 520,
-    background: "#1976d2",
+    background: "black",
+    marginLeft: 200,
   },
   btn: {
     width: 30,
