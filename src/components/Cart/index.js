@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Header from "../Header/header";
-import estilo from "./style.js";
+import estilo, { Barra } from "./style.js";
 import Api from "../../Services/products";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
@@ -77,7 +77,7 @@ function Cart() {
       <Header />
       {
         <div>
-          <div className={classes.footer}>
+          <Barra>
             <Snackbar
               anchorOrigin={{ vertical, horizontal }}
               open={Aberto}
@@ -98,7 +98,7 @@ function Cart() {
             >
               Finalizar
             </Button>
-          </div>
+          </Barra>
           <div className={classes.container}>
             <div className={classes.carrinho}>
               {elemento &&

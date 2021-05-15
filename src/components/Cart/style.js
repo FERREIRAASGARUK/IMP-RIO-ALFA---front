@@ -1,4 +1,23 @@
 import { makeStyles } from "@material-ui/styles";
+import styled from "styled-components";
+
+export const Barra = styled.div`
+  height: 100px;
+  width: 1000px;
+  margin-top: 200px;
+  display: "flex";
+  flexdirection: "row";
+  justify-content: space-between;
+  padding-right: 15px;
+  background-color: black;
+  margin-left: 450px;
+  @media (max-width: 1366px) {
+    margin-left: 190px;
+  }
+  @media (max-width: 1440px) {
+    margin-left: 190px;
+  } ;
+`;
 
 const estilo = makeStyles({
   main: {
@@ -19,18 +38,7 @@ const estilo = makeStyles({
     width: 133,
     height: 33,
   },
-  footer: {
-    height: 100,
-    width: 1000,
-    marginTop: 200,
-    marginBottom: 50,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight: 15,
-    background: "black",
-    marginLeft: 200,
-  },
+
   btn: {
     width: 30,
     marginLeft: 10,
@@ -42,10 +50,11 @@ const estilo = makeStyles({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    height: 1000,
+    height: 2000,
     background: "",
     borderRadius: 10,
     marginBottom: 100,
+
     width: "100%",
     position: "absolute",
   },
@@ -82,13 +91,12 @@ const estilo = makeStyles({
     height: 300,
     width: "100%",
     marginTop: 100,
-
     display: "flex",
     flexDirection: "row",
     paddingRight: 15,
     borderRadius: 4,
 
-    borderBottom: "solid 3px #FF0040",
+    borderBottom: "solid 3px  #2272c3",
   },
   quantidade: {
     display: "flex",
